@@ -1,21 +1,11 @@
 import os
 
-import environ
-
-env = environ.Env()
-
-environ.Env.read_env()
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = env(
-    'SECRET_KEY',
-    default="unsafe-secret-key-45t548fh48fh4gefgh4734753erhg#$@#$")
-
-DEBUG = env('DEBUG', default='True') == 'True'
-
-ALLOWED_HOSTS = env(
-    'ALLOWED_HOSTS', default='localhost').split(', ')
+# Простые настройки без environ
+SECRET_KEY = 'unsafe-secret-key-45t548fh48fh4gefgh4734753erhg#$@#$'
+DEBUG = True
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,7 +14,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'rest_framework',
     'rest_framework.authtoken',
     'posts',
@@ -93,17 +82,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'ru-RU'
-
 TIME_ZONE = 'Europe/Moscow'
-
 USE_I18N = True
-
 USE_L10N = False
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
